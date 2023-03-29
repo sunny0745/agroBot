@@ -11,7 +11,7 @@ function App() {
   const initFunction = async () => {
     const message = document.getElementById("sendBox").value;
 
-    if (message.toLowerCase() === "hi") {
+    if (message.toLowerCase() === "hi" || message.toLowerCase() ==="hello" || message.toLowerCase() ==="hey") {
       setBubbles((prevBubbles) => [
         ...prevBubbles,
         {
@@ -19,6 +19,9 @@ function App() {
           response: message,
         },
       ]);
+
+    
+
       document.getElementById("sendBox").value = "";
       setBubbles((prevBubbles) => [
         ...prevBubbles,
@@ -28,7 +31,8 @@ function App() {
         },
       ]);
     }
-    if (message.toLowerCase() === "ok" || message.toLowerCase() === "okay") {
+    
+    if (message.toLowerCase() === "ok" || message.toLowerCase() === "okay" || message.toLowerCase() === "okie") {
       setBubbles((prevBubbles) => [
         ...prevBubbles,
         {
@@ -45,7 +49,10 @@ function App() {
         },
       ]);
     }
-    if (message.toLowerCase() === "what") {
+    
+    if (message.toLowerCase() === "what" || message.toLowerCase() === "why" || message.toLowerCase() === "when" ||
+    message.toLowerCase() === "where" || message.toLowerCase() === "whom" || message.toLowerCase() === "whose" || 
+    message.toLowerCase() === "how" ) {
       setBubbles((prevBubbles) => [
         ...prevBubbles,
         {
@@ -60,6 +67,65 @@ function App() {
           side: "server",
           response:
             "Sorry I didn't get it, could you just elaborate your question once again?",
+        },
+      ]);
+    }
+
+    if (message.toLowerCase() === " who made you ? " || message.toLowerCase() === " who created you ? " ||
+    message.toLowerCase() === " who is your creator? " || message.toLowerCase() === " who built you ? " ||
+     message.toLowerCase() === " who programmed you ? " ) {
+      setBubbles((prevBubbles) => [
+        ...prevBubbles,
+        {
+          side: "client",
+          response: message,
+        },
+      ]);
+      document.getElementById("sendBox").value = "";
+      setBubbles((prevBubbles) => [
+        ...prevBubbles,
+        {
+          side: "server",
+          response:
+            "I am created by a group of students whose names are samarth singh bachhotiya , vedant rajput , sunny singh , richa parihar",
+        },
+      ]);
+    }
+
+    if (message.toLowerCase() === " what is your name ?" ) {
+      setBubbles((prevBubbles) => [
+        ...prevBubbles,
+        {
+          side: "client",
+          response: message,
+        },
+      ]);
+      document.getElementById("sendBox").value = "";
+      setBubbles((prevBubbles) => [
+        ...prevBubbles,
+        {
+          side: "server",
+          response:
+            "my name is agroBot but you can call me mine.",
+        },
+      ]);
+    } 
+   
+    if (message.toLowerCase() === " what is your gender ?" ) {
+      setBubbles((prevBubbles) => [
+        ...prevBubbles,
+        {
+          side: "client",
+          response: message,
+        },
+      ]);
+      document.getElementById("sendBox").value = "";
+      setBubbles((prevBubbles) => [
+        ...prevBubbles,
+        {
+          side: "server",
+          response:
+            "As an artificial intelligence bot , I don't have a gender identity.",
         },
       ]);
     }
@@ -101,9 +167,25 @@ function App() {
     if (
       message.length > 0 &&
       message.toLowerCase() !== "hi" &&
+      message.toLowerCase() !== "hello" &&
+      message.toLowerCase() !== "hey" &&
       message.toLowerCase() !== "ok" &&
       message.toLowerCase() !== "okay" &&
+      message.toLowerCase() !== "okie" &&
       message.toLowerCase() !== "what" &&
+      message.toLowerCase() !== "why" &&
+      message.toLowerCase() !== "when"&&
+      message.toLowerCase() !== "whom"&&
+      message.toLowerCase() !== "where"&&
+      message.toLowerCase() !== "whose"&&
+      message.toLowerCase() !== "how"&&
+      message.toLowerCase() !== " who made you ? " &&
+      message.toLowerCase() !== " who created you ? "&&
+      message.toLowerCase() !== " who is your creator ? "&&
+      message.toLowerCase() !== " who built you ? "&&
+      message.toLowerCase() !== " who programmed you ? "&&
+      message.toLowerCase() !== " what is your name ? "&&
+      message.toLowerCase() !== " what is your gender ?"&&
       !message.includes("generate") &&
       !message.includes("image")
     ) {
@@ -267,12 +349,15 @@ function App() {
     }
     mode++;
   };
-
+setBubbles ({
+  side: 'server',
+  message: "Hiii"
+})
   return (
     <>
       <MainComponent
         initFunction={initFunction}
-        bubbles={bubbles}
+        chat={bubbles}
         deleteAll={deleteAll}
         toggleMode={toggleMode}
         responseLoading={responseLoading}
